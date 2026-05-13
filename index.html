@@ -18,8 +18,9 @@
     }
 
     .word {
-      font-size: 40px;
+      font-size: clamp(40px, 10vw, 72px);
       margin-bottom: 20px;
+      word-break: keep-all;
     }
 
     .meaning {
@@ -43,10 +44,18 @@
        gap: 10px;
      }
 
-    .button-row button {
-      flex: 1;
-      max-width: 140px;
-    }
+       .button-row button {
+        height: 90px;
+       }
+
+       .meaning-btn {
+        width: 150px;
+        line-height: 1.3;
+     }
+
+       .small-btn {
+        width: 90px; 
+     }
 
     #study {
       padding: 20px;
@@ -113,11 +122,11 @@
   <!-- 横並び -->
   <div class="button-row">
 
-    <button onclick="prevWord()">前へ</button>
+    <button class="small-btn" onclick="prevWord()">前へ</button>
 
-    <button onclick="showMeaning()">意味を見る</button>
+    <button class="meaning-btn" onclick="showMeaning()"> 意味を<br>見る</button>
 
-    <button onclick="nextWord()">次へ</button>
+    <button class="small-btn" onclick="nextWord()">次へ</button>
 
   </div>
 
