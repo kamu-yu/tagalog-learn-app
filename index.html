@@ -3,72 +3,96 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-<title>タガログ学習アプリ</title>
 
-<link rel="manifest" href="manifest.json">
+  <title>タガログ学習アプリ</title>
 
- <style>
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+
     body {
       font-family: sans-serif;
       text-align: center;
       margin-top: 80px;
+      background: #f5f5f5;
     }
+
     .word {
       font-size: 40px;
       margin-bottom: 20px;
     }
+
     .meaning {
       font-size: 30px;
       color: gray;
       margin-bottom: 20px;
     }
+
     button {
       font-size: 18px;
       margin: 8px;
       padding: 10px 16px;
+      border: none;
+      border-radius: 12px;
     }
- /* スマホ用 */
-   @media screen and (max-width: 600px) {
 
-     body {
-       margin-top: 30px;
-       padding: 10px;
-     }
+    /* 横並びボタン */
+    .button-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
 
-     h1 {
-       font-size: 28px;
-     }
+    /* 学習カード */
+    #study {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 500px;
+      margin: auto;
+    }
 
-     .word {
-       font-size: 42px;
-     }
+    /* スマホ用 */
+    @media screen and (max-width: 600px) {
 
-     .meaning {
-       font-size: 28px;
-     }
+      body {
+        margin-top: 30px;
+        padding: 10px;
+      }
 
-     button {
-       font-size: 22px;
-       width: 90%;
-       max-width: 320px;
-       padding: 16px;
-       margin: 10px auto;
-       display: block;
-       border-radius: 12px;
-     }
+      h1 {
+        font-size: 28px;
+      }
 
-   }
+      .word {
+        font-size: 42px;
+      }
+
+      .meaning {
+        font-size: 28px;
+      }
+
+      button {
+        font-size: 22px;
+        padding: 16px;
+      }
+
+    }
 
   </style>
-
 </head>
+
 <body>
 
 <!-- ===================== -->
 <!-- ホーム画面 -->
 <!-- ===================== -->
+
 <div id="home">
+
   <h1>ジャンルを選んでください</h1>
 
   <button onclick="startStudy('greeting')">挨拶</button>
@@ -76,22 +100,34 @@
   <button onclick="startStudy('responding')">一言返事</button>
   <button onclick="startStudy('daily')">日常</button>
   <button onclick="startStudy('coming')">coming soon</button>
+
 </div>
 
 <!-- ===================== -->
 <!-- 学習画面 -->
 <!-- ===================== -->
+
 <div id="study" style="display:none;">
 
   <div class="word" id="word">---</div>
+
   <div class="meaning" id="meaning">???</div>
 
-  <button onclick="prevWord()">前へ</button>
-  <button onclick="showMeaning()">意味を見る</button>
-  <button onclick="nextWord()">次へ</button>
+  <!-- 横並び -->
+  <div class="button-row">
+
+    <button onclick="prevWord()">前へ</button>
+
+    <button onclick="showMeaning()">意味を見る</button>
+
+    <button onclick="nextWord()">次へ</button>
+
+  </div>
 
   <br><br>
+
   <button onclick="goHome()">← ホームに戻る</button>
+
 </div>
 
 <script>
@@ -176,10 +212,13 @@ let index = 0;
 // ホーム → 学習開始
 // =====================
 function startStudy(name) {
+
   currentSet = wordSets[name];
+
   index = 0;
 
   document.getElementById("home").style.display = "none";
+
   document.getElementById("study").style.display = "block";
 
   showWord();
@@ -188,40 +227,59 @@ function startStudy(name) {
 // =====================
 // ホームに戻る
 // =====================
+
 function goHome() {
+
   document.getElementById("home").style.display = "block";
+
   document.getElementById("study").style.display = "none";
 }
 
 // =====================
 // 単語表示
 // =====================
+
 function showWord() {
-  document.getElementById("word").textContent = currentSet[index].word;
+
+  document.getElementById("word").textContent =
+    currentSet[index].word;
+
   document.getElementById("meaning").textContent = "???";
 }
 
 // =====================
 // 意味表示
 // =====================
-function showMeaning() {
-  document.getElementById("meaning").textContent = currentSet[index].meaning;
-}
 
+function showMeaning() {
+
+  document.getElementById("meaning").textContent =
+    currentSet[index].meaning;
+}
 
 // =====================
 // 前へ
 // =====================
+
 function prevWord() {
-  index = (index - 1 + currentSet.length) % currentSet.length;
+
+  index =
+    (index - 1 + currentSet.length)
+    % currentSet.length;
+
   showWord();
 }
 
 // =====================
 // 次へ
 // =====================
+
 function nextWord() {
-  index = (index + 1) % currentSet.length;
+
+  index =
+    (index + 1)
+    % currentSet.length;
+
   showWord();
 }
 
@@ -229,3 +287,7 @@ function nextWord() {
 
 </body>
 </html>
+
+
+
+
