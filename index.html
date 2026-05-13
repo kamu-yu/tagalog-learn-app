@@ -2,11 +2,13 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>タガログ学習アプリ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+<title>タガログ学習アプリ</title>
 
 <link rel="manifest" href="manifest.json">
 
-  <style>
+ <style>
     body {
       font-family: sans-serif;
       text-align: center;
@@ -26,7 +28,40 @@
       margin: 8px;
       padding: 10px 16px;
     }
+ /* スマホ用 */
+   @media screen and (max-width: 600px) {
+
+     body {
+       margin-top: 30px;
+       padding: 10px;
+     }
+
+     h1 {
+       font-size: 28px;
+     }
+
+     .word {
+       font-size: 42px;
+     }
+
+     .meaning {
+       font-size: 28px;
+     }
+
+     button {
+       font-size: 22px;
+       width: 90%;
+       max-width: 320px;
+       padding: 16px;
+       margin: 10px auto;
+       display: block;
+       border-radius: 12px;
+     }
+
+   }
+
   </style>
+
 </head>
 <body>
 
