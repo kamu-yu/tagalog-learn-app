@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>タガログ語学習アプリ</title>
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ===================== -->
+  <!-- 学習方法選択画面 -->
+  <!-- ===================== -->
+  <main id="modeSelect" class="screen">
+    <h1>タガログ語学習</h1>
+    <p class="screen-description">学習方法を選んでください</p>
+
+    <div class="menu-list">
+      <button class="menu-button" onclick="openFlashcardHome()">
+        <span class="menu-title">単語帳</span>
+        <span class="menu-subtitle">1語ずつめくって学ぶ</span>
+      </button>
+
+      <button class="menu-button" onclick="openWordListHome()">
+        <span class="menu-title">単語集</span>
+        <span class="menu-subtitle">一覧でまとめて読む</span>
+      </button>
+
+      <button class="menu-button disabled-button" disabled>
+        <span class="menu-title">テスト</span>
+        <span class="menu-subtitle">Coming Soon</span>
+      </button>
+
+      <button class="menu-button disabled-button" disabled>
+        <span class="menu-title">設定</span>
+        <span class="menu-subtitle">Coming Soon</span>
+      </button>
+    </div>
+  </main>
+
+  <!-- ===================== -->
+  <!-- 単語帳：ジャンル選択 -->
+  <!-- ===================== -->
+  <section id="flashcardHome" class="screen" hidden>
+    <h1>単語帳</h1>
+    <p class="screen-description">ジャンルを選んでください</p>
+
+    <div class="category-list">
+      <button onclick="startFlashcard('greeting')">挨拶</button>
+      <button onclick="startFlashcard('eating')">食事</button>
+      <button onclick="startFlashcard('responding')">一言返事</button>
+      <button onclick="startFlashcard('daily')">日常</button>
+      <button onclick="startFlashcard('coming')">Coming Soon</button>
+    </div>
+
+    <button class="back-button" onclick="backToModeSelect()">← 学習方法に戻る</button>
+  </section>
+
+  <!-- ===================== -->
+  <!-- 単語集：ジャンル選択 -->
+  <!-- ===================== -->
+  <section id="wordListHome" class="screen" hidden>
+    <h1>単語集</h1>
+    <p class="screen-description">ジャンルを選んでください</p>
+
+    <div class="category-list">
+      <button onclick="openWordListPlaceholder('挨拶')">挨拶</button>
+      <button onclick="openWordListPlaceholder('食事')">食事</button>
+      <button onclick="openWordListPlaceholder('一言返事')">一言返事</button>
+      <button onclick="openWordListPlaceholder('日常')">日常</button>
+      <button onclick="openWordListPlaceholder('Coming Soon')">Coming Soon</button>
+    </div>
+
+    <button class="back-button" onclick="backToModeSelect()">← 学習方法に戻る</button>
+  </section>
+
+  <!-- ===================== -->
+  <!-- 単語集：準備中画面 -->
+  <!-- ===================== -->
+  <section id="wordListPlaceholder" class="screen" hidden>
+    <h1 id="wordListTitle">単語集</h1>
+    <p class="placeholder-message">
+      このジャンルの一覧表示は、次の段階で追加します。
+    </p>
+
+    <button class="back-button" onclick="backToWordListHome()">← ジャンル選択に戻る</button>
+  </section>
+
+  <!-- ===================== -->
+  <!-- 単語帳：学習画面 -->
+  <!-- ===================== -->
+  <section id="flashcardStudy" class="screen" hidden>
+    <div class="word" id="word">---</div>
+    <div class="meaning" id="meaning">???</div>
+
+    <div class="button-row">
+      <button class="small-btn" onclick="prevWord()">前へ</button>
+
+      <button class="meaning-btn" onclick="showMeaning()">
+        意味を<br>見る
+      </button>
+
+      <button class="small-btn" onclick="nextWord()">次へ</button>
+    </div>
+
+    <button class="back-button" onclick="backToFlashcardHome()">← ジャンル選択に戻る</button>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
